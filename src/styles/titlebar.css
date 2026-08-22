@@ -1,0 +1,85 @@
+/* ============================================================
+   TITLEBAR PERSONALIZADO
+   La ventana corre con decorations:false, asi que esta barra
+   es la unica forma de mover/cerrar la ventana.
+   El atributo data-tauri-drag-region hace que arrastrarla
+   mueva la ventana.
+   ============================================================ */
+
+.titlebar {
+  grid-area: titlebar;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--h-titlebar);
+  padding-left: var(--sp-4);
+  background: var(--c-titlebar);
+  border-bottom: 1px solid var(--c-border);
+  /* Sin esto, arrastrar sobre la barra selecciona texto en vez de mover. */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.titlebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  pointer-events: none; /* que el drag lo capture el header */
+}
+
+.titlebar__mark {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--c-accent), #8b5cf6);
+}
+
+.titlebar__title {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.09em;
+  color: var(--c-text-dim);
+}
+
+/* ── Botones de ventana ──────────────────────────────────── */
+
+.titlebar__controls {
+  display: flex;
+  height: 100%;
+}
+
+.winbtn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 100%;
+  color: var(--c-text-muted);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.winbtn svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.winbtn:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text);
+}
+
+.winbtn:active {
+  background: var(--c-surface-3);
+}
+
+.winbtn--close:hover {
+  background: var(--c-danger);
+  color: #fff;
+}
+
+.winbtn--close:active {
+  background: #c93b40;
+}

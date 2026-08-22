@@ -1,0 +1,166 @@
+/* ============================================================
+   LAYOUT PRINCIPAL
+   titlebar / cuerpo (sidebar + stage) / actionbar
+   ============================================================ */
+
+.app {
+  display: grid;
+  grid-template-rows: var(--h-titlebar) 1fr;
+  grid-template-areas:
+    "titlebar"
+    "body";
+  height: 100vh;
+  background: var(--c-bg);
+}
+
+.launcher-layout {
+  grid-area: body;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  min-height: 0;
+  background: #f5f5f3;
+}
+
+.launcher-art {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: url("/src/assets/foto.jpg") center / cover no-repeat;
+}
+
+.launcher-version { position: absolute; left: 22px; bottom: 18px; color: rgba(255, 255, 255, .82); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-shadow: 0 1px 3px rgba(0, 0, 0, .65); }
+
+.account-panel { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 34px 34px 28px; background: #0b2743; color: #f3f7fb; }
+.account-panel__logo { display: grid; place-items: center; width: 100%; margin-bottom: 28px; }
+.account-panel__logo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.account-panel__views { width: 100%; max-width: 270px; flex: 1; }
+.account-view { display: none; flex-direction: column; gap: 13px; padding-top: 8px; }
+.account-view.is-active { display: flex; animation: panel-in 180ms ease-out; }
+
+@keyframes panel-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+
+.app__body {
+  grid-area: body;
+  display: grid;
+  grid-template-columns: var(--w-sidebar) 1fr;
+  min-height: 0; /* deja que el hijo con scroll se encoja */
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-3);
+  background: var(--c-surface);
+  border-right: 1px solid var(--c-border);
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.sidebar__foot {
+  padding: var(--sp-3);
+}
+
+.sidebar__version {
+  font-size: var(--fs-xs);
+  color: var(--c-text-dim);
+  letter-spacing: 0.04em;
+}
+
+.navitem {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-3);
+  border-radius: var(--r-md);
+  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  text-align: left;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.navitem:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text);
+}
+
+.navitem.is-active {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+}
+
+.navitem__icon {
+  width: 16px;
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+/* ── Stage: contenedor de pantallas ──────────────────────── */
+
+.stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  padding: var(--sp-6);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity var(--t-base), transform var(--t-base), visibility var(--t-base);
+}
+
+.screen.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* El hero va a sangre, sin el padding del screen. */
+.screen[data-screen="home"] {
+  padding: 0;
+}
+
+.screen__title {
+  margin-bottom: var(--sp-5);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+}
+
+/* ── Actionbar ───────────────────────────────────────────── */
+
+.actionbar {
+  grid-area: actionbar;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  padding: 0 var(--sp-6);
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+}
+
+.actionbar__status {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.actionbar__label {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}

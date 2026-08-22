@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Launcher</title>
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/titlebar.css" />
+    <link rel="stylesheet" href="/src/styles/layout.css" />
+    <link rel="stylesheet" href="/src/styles/components.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- ── Titlebar personalizado (la ventana no tiene bordes nativos) ── -->
+      <header class="titlebar" data-tauri-drag-region>
+        <div class="titlebar__brand" data-tauri-drag-region>
+          <span class="titlebar__mark" aria-hidden="true"></span>
+          <span class="titlebar__title">GAME LAUNCHER</span>
+        </div>
+
+        <div class="titlebar__controls">
+          <button class="winbtn" data-window-action="minimize" title="Minimizar" aria-label="Minimizar">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 5h10" /></svg>
+          </button>
+          <button class="winbtn winbtn--close" data-window-action="close" title="Cerrar" aria-label="Cerrar">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 0l10 10M10 0L0 10" /></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="launcher-layout">
+        <section class="launcher-art" aria-label="Arte del juego">
+          <span class="launcher-version">v0.1.0</span>
+        </section>
+
+        <section class="account-panel" aria-label="Cuenta del launcher">
+          <div class="account-panel__logo">
+            <img src="/src/assets/logor2.png" alt="Logo del juego" />
+          </div>
+          <div class="account-panel__views">
+            <section class="account-view is-active" data-account-view="login">
+              <p class="account-view__kicker">Bienvenido</p>
+              <h1>Iniciar sesion</h1>
+              <label class="auth-input"><span aria-hidden="true">◉</span><input type="text" placeholder="Usuario" /></label>
+              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /></label>
+              <label class="check"><input type="checkbox" checked /> <span>Guardar contrasena</span></label>
+              <button class="btn btn--primary account-action" type="button">Entrar</button>
+              <button class="panel-link" type="button" data-account-route="register">Registrar cuenta</button>
+              <button class="panel-link" type="button" data-account-route="settings">Configuraciones</button>
+            </section>
+
+            <section class="account-view" data-account-view="register">
+              <p class="account-view__kicker">Nueva cuenta</p>
+              <h1>Registrar cuenta</h1>
+              <label class="auth-input"><span aria-hidden="true">◉</span><input type="text" placeholder="Usuario" /></label>
+              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /></label>
+              <button class="btn btn--primary account-action" type="button">Registrar</button>
+              <button class="panel-link panel-link--back" type="button" data-account-route="login">Volver</button>
+            </section>
+
+            <section class="account-view" data-account-view="settings">
+              <p class="account-view__kicker">Preferencias</p>
+              <h1>Configuraciones</h1>
+              <label class="check"><input type="checkbox" checked /> <span>Contorno de personaje</span></label>
+              <label class="setting-row" for="resolution">Resolucion <select id="resolution"><option>1920 x 1080</option><option>1280 x 720</option></select></label>
+              <button class="btn btn--primary account-action" type="button">Guardar</button>
+              <button class="panel-link panel-link--back" type="button" data-account-route="login">Volver</button>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

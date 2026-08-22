@@ -1,0 +1,28 @@
+[package]
+name = "game-launcher"
+version = "0.1.0"
+description = "Game Launcher"
+authors = ["you"]
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+# El nombre de la lib no puede chocar con el del binario en Windows.
+name = "game_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Perfil optimizado para tamano de binario: es lo que mantiene el .exe liviano.
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
