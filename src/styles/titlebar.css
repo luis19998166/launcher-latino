@@ -30,8 +30,7 @@
 .titlebar__mark {
   width: 14px;
   height: 14px;
-  border-radius: var(--r-sm);
-  background: linear-gradient(135deg, var(--c-accent), #8b5cf6);
+  object-fit: contain;
 }
 
 .titlebar__title {

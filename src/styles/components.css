@@ -204,6 +204,9 @@
 .auth-input span { color: #ffb342; font-size: 15px; }
 .auth-input input { width: 100%; border: 0; outline: 0; background: transparent; color: #fff; user-select: text; }
 .auth-input input::placeholder { color: #b9ccdc; }
+.password-toggle { flex: 0 0 auto; width: 24px; height: 24px; color: #b9ccdc; font-size: 14px; }
+.password-toggle:hover { color: #ffc45c; }
+.password-toggle:focus-visible { outline: 2px solid #ffc45c; outline-offset: 2px; border-radius: 50%; }
 .check { display: flex; align-items: center; gap: 8px; padding: 2px 4px; color: #e4eef6; font-size: 12px; font-weight: 600; }
 .check input { accent-color: #48b6e4; }
 .account-action { width: 100%; min-height: 42px; margin-top: 9px; border-radius: 22px; background: #f2a93b; color: #16283a; box-shadow: 0 3px 0 #b9781c; }

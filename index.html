@@ -16,7 +16,7 @@
       <!-- ── Titlebar personalizado (la ventana no tiene bordes nativos) ── -->
       <header class="titlebar" data-tauri-drag-region>
         <div class="titlebar__brand" data-tauri-drag-region>
-          <span class="titlebar__mark" aria-hidden="true"></span>
+          <img class="titlebar__mark" src="/src/assets/R2Beat.ico" alt="" aria-hidden="true" />
           <span class="titlebar__title">GAME LAUNCHER</span>
         </div>
 
@@ -44,7 +44,7 @@
               <p class="account-view__kicker">Bienvenido</p>
               <h1>Iniciar sesion</h1>
               <label class="auth-input"><span aria-hidden="true">◉</span><input type="text" placeholder="Usuario" /></label>
-              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /></label>
+              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /><button class="password-toggle" type="button" aria-label="Ver contrasena" aria-pressed="false">◉</button></label>
               <label class="check"><input type="checkbox" checked /> <span>Guardar contrasena</span></label>
               <button class="btn btn--primary account-action" type="button">Entrar</button>
               <button class="panel-link" type="button" data-account-route="register">Registrar cuenta</button>
@@ -55,7 +55,7 @@
               <p class="account-view__kicker">Nueva cuenta</p>
               <h1>Registrar cuenta</h1>
               <label class="auth-input"><span aria-hidden="true">◉</span><input type="text" placeholder="Usuario" /></label>
-              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /></label>
+              <label class="auth-input"><span aria-hidden="true">◆</span><input type="password" placeholder="Contrasena" /><button class="password-toggle" type="button" aria-label="Ver contrasena" aria-pressed="false">◉</button></label>
               <button class="btn btn--primary account-action" type="button">Registrar</button>
               <button class="panel-link panel-link--back" type="button" data-account-route="login">Volver</button>
             </section>
